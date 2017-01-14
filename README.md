@@ -137,7 +137,7 @@ You can create a random generator rng using one of the ```oz {Rand.New}``` or ``
 
 ## A simple "Hello World" example
 
-Here is a small example of what it would take to implement a small GA trying to guess a String (Capitalized and no spaces).
+Here is a complete small example of what it would take to implement a small GA trying to guess a String (Capitalized and no spaces).
 
 ```oz
 functor
@@ -151,10 +151,9 @@ import
 define
 	local
 		Target = "HELLOWORLD" % Target string the GA will try to learn
-		
 		Rng = {Rand.new} % Random Generator
 		
-		fun {NextChar} {Rng.nextIndex 26} + 64 end % generates a random char between 'A' and 'Z'
+		fun {NextChar} {Rng.nextIndex 26} + 64 end
 		% New individual factory : create a random string of length {List.length Target}
 		fun {NewIndividual} 
 			{List.map {List.make {List.length Target}} fun {$ _} {NextChar} end}
