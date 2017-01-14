@@ -23,7 +23,7 @@ Threshold = 0.8
 P|_ = {List.dropWhile {GA.evolve Pop NextFn} fun {$ P} {GA.bestBy P FitnessFn}.1 < Threshold end}
 ```
 
-The library doesn't assume anything about the representation of the individual you are using, or how the next population is computed.
+The library doesn't assume anything about the representation of the individuals, or how the next population is computed.
 This gives full freedom to represent the individuals and next generation computation as you want. 
 The library could easily be extended with a genetic programming module for instance (where individuals would be S-expression for instance)
 
@@ -40,13 +40,13 @@ The modules Rand, Selector, Operation and GA are providing functions to help you
 
 Building blocks are designed to work the following way :
 - Generate randomly an initial population from a user-provided function
-- Create a Next function, working the following way :
+- Create a NextFn function, working the following way :
 	- Creates a mating pool from the current population, using a user-provided MatingFn function.
 	- Apply Crossovers and Mutations using user-provided functions and configurable probability
 	- returning the newly generated population
 
 The mating pool function can be generated using a user-provided fitness function and a user-provided selector function.
-The selector function can also be generated using support form the Selector module.
+The selector function can also be generated using support from the Selector module.
 
 This gives you a lot of control on what to use. 
 
